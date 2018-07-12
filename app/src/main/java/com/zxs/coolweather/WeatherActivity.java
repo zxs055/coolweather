@@ -1,5 +1,6 @@
 package com.zxs.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.zxs.coolweather.gson.Forecast;
 import com.zxs.coolweather.gson.Weather;
+import com.zxs.coolweather.service.AutoUpdateService;
 import com.zxs.coolweather.util.HttpUtil;
 import com.zxs.coolweather.util.Utility;
 
@@ -233,5 +235,8 @@ public class WeatherActivity extends AppCompatActivity {
         sportText.setText(sport);
 
         weatherLayout.setVisibility(View.VISIBLE);
+
+        Intent intent=new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
